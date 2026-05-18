@@ -20,8 +20,8 @@ Sigue estos pasos en orden para ejecutar todo el sistema en tu entorno local:
 
 ### 1. Clonar el Repositorio
 ```bash
-git clone <URL_DE_TU_REPOSITORIO>
-cd <NOMBRE_DE_LA_CARPETA>
+git clone https://github.com/pablo-navia5/Veterinario.git
+cd Veterinario
 ```
 
 ### 2. Base de Datos (mongoDB)
