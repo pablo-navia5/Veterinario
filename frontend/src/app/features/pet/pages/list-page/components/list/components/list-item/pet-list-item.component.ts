@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PetModel } from '../../../../../../models/pet.model';
 import { RouterLink } from '@angular/router';
 
@@ -10,5 +10,12 @@ import { RouterLink } from '@angular/router';
   styleUrl: './pet-list-item.component.scss',
 })
 export class PetListItemComponent {
+
   @Input({ required: true }) pet!: PetModel;
+
+  @Output() delete = new EventEmitter<string>();
+
+  onDeleteClick() {
+    this.delete.emit(this.pet.id);
+  }
 }

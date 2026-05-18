@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { PetService } from '../../services/pet.service';
 import { PetListComponent } from './components/list/pet-list.component';
 import { RouterLink } from '@angular/router';
+import { AlertService } from '../../../../core/services/alert.service';
 
 @Component({
   selector: 'app-pet-list-page',
@@ -17,6 +18,7 @@ export class PetsListPageComponent implements OnInit {
   private subscription: Subscription = new Subscription();
 
   private readonly petService: PetService = inject(PetService);
+  private readonly alertService: AlertService = inject(AlertService);
   private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
@@ -28,6 +30,20 @@ export class PetsListPageComponent implements OnInit {
         },
       }),
     );
+  }
+
+  onDelete(id: string): void {
+    if (confirm('Quieres eliminar esta mascota del sistema?')) {
+      this.petService.deletePet(id).subscribe({
+        next: () => {
+          this.pets = this.pets.filter(pet => pet.id !== id);
+          this.cdr.detectChanges();
+        },
+        error: () => {
+          this.alertService.showAlert('Error al eliminar la mascota');
+        },
+      });
+    }
   }
 
   ngOnDestroy(): void {

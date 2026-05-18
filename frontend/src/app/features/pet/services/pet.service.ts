@@ -26,4 +26,17 @@ export class PetService {
                  map((response) => this.adapter.adapt(response)),
                )
   }
+
+  updatePet(pet: PetModel): Observable<PetModel> {
+    return this.http
+               .put<any>(`${this.url}/update`, pet)
+               .pipe(
+                 map((response) => this.adapter.adapt(response)),
+               )
+  }
+
+  deletePet(id: string): Observable<void> {
+    return this.http
+               .delete<any>(`${this.url}/${id}`)
+  }
 }

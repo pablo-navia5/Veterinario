@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PetModel } from '../../../../models/pet.model';
 import { PetListItemComponent } from './components/list-item/pet-list-item.component';
 
@@ -10,5 +10,7 @@ import { PetListItemComponent } from './components/list-item/pet-list-item.compo
   styleUrl: './pet-list.component.scss',
 })
 export class PetListComponent {
+
   @Input() pets: PetModel[] = [];
+  @Output() delete = new EventEmitter<string>();
 }

@@ -1,9 +1,8 @@
 <div class="grid">
   @for (pet of pets; track pet.id) {
-    <app-pet-list-item [pet]="pet"></app-pet-list-item>
+    <app-pet-list-item [pet]="pet" (delete)="delete.emit($event)"></app-pet-list-item>
   } @empty {
     <div class="empty-state">
-      <div class="empty-icon">🏥</div>
       <h3>No hay mascotas en el sistema</h3>
       <p>La lista de la clinica está vacia. Utiliza el boton superior para añadir uno.</p>
     </div>

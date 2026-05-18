@@ -9,6 +9,6 @@
   </header>
 
   <main class="dashboard-content">
-    <app-pet-list [pets]="pets"></app-pet-list>
+    <app-pet-list [pets]="pets" (delete)="onDelete($event)"></app-pet-list>
   </main>
 </div>

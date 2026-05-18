@@ -4,6 +4,7 @@ import com.example.backend.dtos.PetDto;
 import com.example.backend.facades.PetFacade;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,6 +49,11 @@ public class PetController {
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<PetDto> updatePetById(@Valid @RequestBody PetDto petDto) {
+        return ResponseEntity.ok(petFacade.save(petDto));
     }
 
     @PostMapping("/new")

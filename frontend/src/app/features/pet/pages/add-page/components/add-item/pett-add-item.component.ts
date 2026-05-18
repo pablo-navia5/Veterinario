@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { PetModel } from '../../../../models/pet.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -9,9 +9,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   imports: [ReactiveFormsModule],
   styleUrl: 'pett-add-item.component.scss',
 })
-export class PetAddItemComponent {
+export class PetAddItemComponent implements OnInit {
   private fb = inject(FormBuilder);
 
+  @Input() petData: PetModel | null = null;
   @Output() save = new EventEmitter<PetModel>();
 
   petForm: FormGroup = this.fb.group({
@@ -20,6 +21,12 @@ export class PetAddItemComponent {
     age: [0, [Validators.required, Validators.min(0)]],
     weight: [0, [Validators.required, Validators.min(0.1)]],
   });
+
+  ngOnInit(): void {
+    if (this.petData) {
+      this.petForm.patchValue(this.petData);
+    }
+  }
 
   get form() { return this.petForm.controls; }
 

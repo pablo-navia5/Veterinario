@@ -1,0 +1,13 @@
+<div class="form-container">
+  <header class="form-header">
+    <button class="btn-back" routerLink="">⬅ Volver al Panel</button>
+    <h1>Editar Historial Clínico</h1>
+    <p>Modifica los datos del paciente seleccionado.</p>
+  </header>
+
+  <main class="form-content">
+    @if (pet) {
+      <app-pet-add-item [petData]="pet" (save)="onUpdatePet($event)"></app-pet-add-item>
+    }
+  </main>
+</div>

@@ -25,11 +25,11 @@
   </div>
 
   <div class="card-actions">
-    <button class="btn-action edit" [routerLink]="['/pet/edit', pet.id]">
-      ✏️ Ficha
+    <button class="btn-action edit" [routerLink]="['/edit']" [state]="{ pet: pet }">
+      Editar ficha
     </button>
-    <button class="btn-action delete">
-      🗑️ Alta
+    <button class="btn-action delete" (click)="onDeleteClick()">
+      Eliminar mascota
     </button>
   </div>
 </div>
