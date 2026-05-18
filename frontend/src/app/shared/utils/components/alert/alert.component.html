@@ -1,0 +1,11 @@
+@if (alertMessage()) {
+  <div class="alert-toast error" role="alert">
+    <div class="alert-icon">⚠️</div>
+
+    <div class="alert-content">
+      <p class="alert-message">{{ alertMessage() }}</p>
+    </div>
+
+    <button class="alert-close" (click)="clearAlert()">&times;</button>
+  </div>
+}

@@ -15,7 +15,15 @@ export class PetService {
     return this.http
                .get<PetModel[]>(`${this.url}/all`)
                .pipe(
-                 map((data: any[]) => data.map((game) => this.adapter.adapt(game)))
+                 map((data: any[]) => data.map((pet) => this.adapter.adapt(pet)))
                );
+  }
+
+  createPet(pet: PetModel): Observable<PetModel> {
+    return this.http
+               .post<any>(`${this.url}/new`, pet)
+               .pipe(
+                 map((response) => this.adapter.adapt(response)),
+               )
   }
 }

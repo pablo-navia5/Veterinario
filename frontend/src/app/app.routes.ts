@@ -1,8 +1,14 @@
 import { Routes } from '@angular/router';
-import { PetListComponent } from './features/pet/pages/list-page/components/list/pet-list.component';
 import { PetsListPageComponent } from './features/pet/pages/list-page/pet-list-page.component';
+import { PetAddPageComponent } from './features/pet/pages/add-page/pet-add-page.component';
 
-export const routes: Routes = [{
-  path: '',
-  component: PetsListPageComponent
-}];
+export const routes: Routes = [
+  {
+    path: '',
+    component: PetsListPageComponent,
+  },
+  {
+    path: 'new',
+    component: PetAddPageComponent,
+  },
+];

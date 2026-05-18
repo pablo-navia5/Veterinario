@@ -1,0 +1,48 @@
+<form [formGroup]="petForm" (ngSubmit)="onSubmit()" class="reactive-form">
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name">Nombre de la Mascota</label>
+      <input id="name" type="text" formControlName="name"
+             [class.is-invalid]="form['name'].touched && form['name'].errors" placeholder="Ej: Toby">
+      @if (form['name'].touched && form['name'].errors?.['required']) {
+        <small class="error-text">El nombre es obligatorio.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="species">Especie</label>
+      <select id="species" formControlName="species"
+              [class.is-invalid]="form['species'].touched && form['species'].errors">
+        <option value="">Selecciona especie...</option>
+        <option value="Perro">Perro</option>
+        <option value="Gato">Gato</option>
+        <option value="Otro">Otro</option>
+      </select>
+      @if (form['species'].touched && form['species'].errors?.['required']) {
+        <small class="error-text">La especie es obligatoria.</small>
+      }
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="age">Edad (Años)</label>
+      <input id="age" type="number" formControlName="age"
+             [class.is-invalid]="form['age'].touched && form['age'].errors">
+      @if (form['age'].touched && form['age'].errors?.['min']) {
+        <small class="error-text">La edad no puede ser negativa.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="weight">Peso (Kg)</label>
+      <input id="weight" type="number" step="0.1" formControlName="weight"
+             [class.is-invalid]="form['weight'].touched && form['weight'].errors">
+      @if (form['weight'].touched && form['weight'].errors?.['min']) {
+        <small class="error-text">El peso debe ser mayor a 0.</small>
+      }
+    </div>
+  </div>
+  <button type="submit" class="btn-submit">Registrar paciente</button>
+</form>
