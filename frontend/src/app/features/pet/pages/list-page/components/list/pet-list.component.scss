@@ -1,0 +1,20 @@
+.pets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.75rem;
+  padding: 0.5rem 0;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 16px;
+  color: #64748b;
+
+  .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+  h3 { margin: 0 0 0.5rem 0; color: #334155; font-size: 1.25rem; }
+  p { margin: 0; font-size: 0.95rem; }
+}

@@ -35,7 +35,7 @@ public class PetController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePetById(@RequestParam String id) {
+    public ResponseEntity<Void> deletePetById(@PathVariable String id) {
         try {
             final Optional<PetDto> pet = petFacade.findById(id);
 

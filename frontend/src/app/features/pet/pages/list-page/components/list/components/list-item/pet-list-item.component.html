@@ -1,0 +1,35 @@
+<div class="pet-card">
+  <div class="card-accent" [class.perro]="pet.species === 'Perro'" [class.gato]="pet.species === 'Gato'"></div>
+
+  <div class="card-header">
+    <div class="pet-avatar">
+      {{ pet.species === 'Perro' ? '🐶' : pet.species === 'Gato' ? '🐱' : '🐾' }}
+    </div>
+    <div class="pet-title-info">
+      <h3>{{ pet.name }}</h3>
+      <span class="species-badge">{{ pet.species }}</span>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="info-metrics">
+      <div class="metric-box">
+        <span class="metric-val">{{ pet.age }}</span>
+        <span class="metric-lbl">Edad (Años)</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-val">{{ pet.weight }}</span>
+        <span class="metric-lbl">Peso (Kg)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-actions">
+    <button class="btn-action edit" [routerLink]="['/pet/edit', pet.id]">
+      ✏️ Ficha
+    </button>
+    <button class="btn-action delete">
+      🗑️ Alta
+    </button>
+  </div>
+</div>

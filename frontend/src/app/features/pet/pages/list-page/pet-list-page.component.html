@@ -1,0 +1,14 @@
+<div class="clinic-dashboard">
+  <header class="dashboard-header">
+    <div class="header-title">
+      <h1>🐾 Veterinaria</h1>
+    </div>
+    <button class="btn-primary" routerLink="/pet/new">
+      <span class="icon">＋</span> Registrar Paciente
+    </button>
+  </header>
+
+  <main class="dashboard-content">
+    <app-pet-list [pets]="pets"></app-pet-list>
+  </main>
+</div>
