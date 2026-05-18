@@ -15,21 +15,13 @@ import { AlertService } from '../../../../core/services/alert.service';
 })
 export class PetsListPageComponent implements OnInit {
   pets: PetModel[] = [];
-  private subscription: Subscription = new Subscription();
 
   private readonly petService: PetService = inject(PetService);
   private readonly alertService: AlertService = inject(AlertService);
   private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
-    this.subscription.add(
-      this.petService.getPets().subscribe({
-        next: (data: PetModel[]) => {
-          this.pets = data;
-          this.cdr.detectChanges();
-        },
-      }),
-    );
+    this.loadPets();
   }
 
   onDelete(id: string): void {
@@ -46,7 +38,29 @@ export class PetsListPageComponent implements OnInit {
     }
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  onSearch(name: string): void {
+    if (!name || name.trim() === '') {
+      this.loadPets()
+      return;
+    }
+
+    this.petService.getPetsByName(name.trim()).subscribe({
+      next: (data) => {
+        this.pets = data;
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.alertService.showAlert('Error al buscar la mascota');
+      }
+    });
+  }
+
+  loadPets(): void {
+    this.petService.getPets().subscribe({
+      next: (data: PetModel[]) => {
+        this.pets = data;
+        this.cdr.detectChanges();
+      },
+    })
   }
 }

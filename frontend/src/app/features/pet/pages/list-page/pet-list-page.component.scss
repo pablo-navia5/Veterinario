@@ -4,6 +4,34 @@
   padding: 0 1.5rem;
   font-family: 'Segoe UI', system-ui, sans-serif;
 
+  .search-container {
+    margin-bottom: 2rem;
+    width: 100%;
+
+    .search-input {
+      width: 100%;
+      max-width: 400px; // Para que no ocupe toda la pantalla y quede elegante
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      color: #0f172a;
+      background-color: #ffffff;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      transition: all 0.15s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #0ea5e9;
+        box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+      }
+
+      &::placeholder {
+        color: #94a3b8;
+      }
+    }
+  }
+
   .dashboard-header {
     display: flex;
     justify-content: space-between;

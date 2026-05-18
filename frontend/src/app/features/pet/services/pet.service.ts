@@ -39,4 +39,9 @@ export class PetService {
     return this.http
                .delete<any>(`${this.url}/${id}`)
   }
+
+  getPetsByName(name: string): Observable<PetModel[]> {
+    return this.http
+      .get<any>(`${this.url}/name/${name}`)
+  }
 }

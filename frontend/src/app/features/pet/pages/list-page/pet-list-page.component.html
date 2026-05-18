@@ -1,12 +1,22 @@
 <div class="clinic-dashboard">
   <header class="dashboard-header">
     <div class="header-title">
-      <h1>🐾 Veterinaria</h1>
+      <h1>🐾 Veterinario</h1>
     </div>
     <button class="btn-primary" routerLink="/new">
-      <span class="icon">＋</span> Registrar Paciente
+      <span class="icon">＋</span> Registrar Mascota
     </button>
   </header>
+
+  <div class="search-container">
+    <input
+      #searchInput
+      type="text"
+      placeholder="Buscar mascota por nombre..."
+      (input)="onSearch(searchInput.value)"
+      class="search-input"
+    />
+  </div>
 
   <main class="dashboard-content">
     <app-pet-list [pets]="pets" (delete)="onDelete($event)"></app-pet-list>
