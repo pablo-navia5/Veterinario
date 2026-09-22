@@ -45,4 +45,4 @@ npm run start
 
 ## 👤 Autor
 *   Pablo Navia - Desarrollador de aplicaciones multiplataforma.
-*   [Linkedin](https://www.linkedin.com/in/pablo-navia-50786b344/) 
+*   [Linkedin](https://www.linkedin.com/in/pablo-navia5) 
